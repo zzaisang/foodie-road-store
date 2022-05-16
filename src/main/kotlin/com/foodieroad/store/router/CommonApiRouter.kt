@@ -3,6 +3,8 @@ package com.foodieroad.store.router
 import com.foodieroad.store.handler.CommonApiHandler
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.web.reactive.function.server.RequestPredicates.path
+import org.springframework.web.reactive.function.server.RouterFunctions.nest
 import org.springframework.web.reactive.function.server.router
 
 /**
@@ -14,8 +16,14 @@ import org.springframework.web.reactive.function.server.router
 class CommonApiRouter(private val commonApiRouter: CommonApiHandler) {
 
     @Bean
-    fun routeFunction() = router {
-                GET("/public/store/source", commonApiRouter::findAll)
+    fun routeFunction() = nest(
+        path("/public/store/source"),
+        router {
+            listOf(
+                GET("/", commonApiRouter::findAll),
+                POST("/", commonApiRouter::save)
+            )
         }
+    )
 
 }
