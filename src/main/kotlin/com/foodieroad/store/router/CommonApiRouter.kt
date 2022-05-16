@@ -13,17 +13,23 @@ import org.springframework.web.reactive.function.server.router
  * @since 2022/05/14
  */
 @Configuration
-class CommonApiRouter(private val commonApiRouter: CommonApiHandler) {
+class CommonApiRouter(
+    private val commonApiHandler: CommonApiHandler
+) {
+
+//    @Bean
+//    fun routeFunction() = nest(path("/public/store/source"),
+//        router {
+//            listOf(
+//                GET("/", commonApiHandler::findAll),
+//                POST("/", commonApiHandler::save)
+//            )
+//        }
+//    )
 
     @Bean
-    fun routeFunction() = nest(
-        path("/public/store/source"),
-        router {
-            listOf(
-                GET("/", commonApiRouter::findAll),
-                POST("/", commonApiRouter::save)
-            )
-        }
-    )
+    fun routeFunction() = router {
+        GET("/public/store/source", commonApiHandler::findAll)
+    }
 
 }
