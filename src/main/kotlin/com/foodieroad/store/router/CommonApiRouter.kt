@@ -29,7 +29,7 @@ class CommonApiRouter(
 
     @Bean
     fun routeFunction() = router {
-        GET("/public/store/source", commonApiHandler::findAll)
+        GET("/public/store/source/{startPage}/{endPage}", commonApiHandler::findAll)
     }
 
 }
