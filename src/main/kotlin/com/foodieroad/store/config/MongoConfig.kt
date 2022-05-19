@@ -1,5 +1,6 @@
 package com.foodieroad.store.config
 
+import com.foodieroad.store.repository.LocalData072404ResultRepository
 import com.mongodb.reactivestreams.client.MongoClients
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -13,10 +14,12 @@ import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRep
  * @since 2022/05/19
  */
 @Configuration
-@EnableReactiveMongoRepositories
+@EnableReactiveMongoRepositories(
+    basePackageClasses = arrayOf(LocalData072404ResultRepository::class)
+)
 class MongoConfig : AbstractReactiveMongoConfiguration(){
 
-    override fun getDatabaseName() = "mongoDatabase"
+    override fun getDatabaseName() = "foodieRoad"
 
     override fun reactiveMongoClient() = mongoClient()
 

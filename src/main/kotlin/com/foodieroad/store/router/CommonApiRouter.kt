@@ -27,9 +27,24 @@ class CommonApiRouter(
 //        }
 //    )
 
+//    @Bean
+//    fun routeFunction() = router {
+//        "/public/store/source".nest {
+//            accept(MediaType.APPLICATION_JSON).nest{
+//                GET("/{startPage}/{endPage}", commonApiHandler::find)
+//            }
+//            POST("/{startPage}/{endPage}", commonApiHandler::save)
+//        }
+//    }
+
     @Bean
-    fun routeFunction() = router {
-        GET("/public/store/source/{startPage}/{endPage}", commonApiHandler::findAll)
-    }
+    fun routerFunction() = nest(path("/public/store/source"),
+        router {
+            listOf(
+                GET("/{startPage}/{endPage}", commonApiHandler::find),
+                POST("/{startPage}/{endPage}", commonApiHandler::save))
+        }
+    )
+
 
 }
