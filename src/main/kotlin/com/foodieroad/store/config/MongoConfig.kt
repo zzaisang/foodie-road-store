@@ -1,6 +1,5 @@
 package com.foodieroad.store.config
 
-import com.foodieroad.store.repository.LocalData072404ResultRepository
 import com.mongodb.reactivestreams.client.MongoClients
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

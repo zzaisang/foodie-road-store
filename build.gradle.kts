@@ -23,8 +23,8 @@ repositories {
 
 dependencies {
 
-	implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
-//	implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
+//	implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
+	implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("io.springfox:springfox-boot-starter:3.0.0")
 
@@ -35,7 +35,7 @@ dependencies {
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 
 	compileOnly("org.projectlombok:lombok")
-//	runtimeOnly("dev.miku:r2dbc-mysql")
+	runtimeOnly("dev.miku:r2dbc-mysql")
 //	runtimeOnly("mysql:mysql-connector-java")
 
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
